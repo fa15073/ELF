@@ -124,7 +124,7 @@ class Context {
 
     void start() {
       th_.reset(new std::thread([&]() {
-        assert(nice(10) == 10);
+        //assert(nice(10) == 10);
         collectAndSendBatch();
       }));
     }
@@ -280,7 +280,7 @@ class Context {
     auto* client = getClient();
     for (int i = 0; i < num_games_; ++i) {
       game_threads_.emplace_back([i, client, this]() {
-        assert(nice(19) == 19);
+        //assert(nice(19) == 19);
         client->start();
         game_cb_(i, client);
         client->End();
@@ -329,7 +329,7 @@ class Context {
     std::atomic<bool> tmp_thread_done(false);
 
     std::thread tmp_thread([&]() {
-      assert(nice(10) == 10);
+      //assert(nice(10) == 10);
 
       std::cout << "Prepare to stop ..." << std::endl;
       client_->prepareToStop();

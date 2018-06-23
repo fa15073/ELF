@@ -12,8 +12,8 @@ test: test_cpp
 test_cpp: test_cpp_elf test_cpp_elfgames_go
 
 build/Makefile: CMakeLists.txt */CMakeLists.txt
-	mkdir -p build
-	(cd build && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..)
+	mkdir build
+	(cd build && cmake -G "MinGW Makefiles" -DZMQ_ROOT_DIR=r:/devrel/libzmq -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..)
 
 .PHONY: elf
 elf: build/Makefile

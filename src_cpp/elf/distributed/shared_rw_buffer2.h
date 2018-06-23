@@ -113,9 +113,7 @@ class Writer {
   std::mutex write_mutex_;
 
   static std::string get_id(std::mt19937& rng) {
-    long host_name_max = sysconf(_SC_HOST_NAME_MAX);
-    if (host_name_max <= 0)
-      host_name_max = _POSIX_HOST_NAME_MAX;
+    long host_name_max = 255;
 
     char* hostname = new char[host_name_max + 1];
     gethostname(hostname, host_name_max);
